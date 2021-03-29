@@ -24,8 +24,8 @@
                             File
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Logout</a>
-                            <a class="dropdown-item" href="logout.php">Change Password</a>
+                            <a class="dropdown-item" href="logout.php">Logout</a>
+                            <a class="dropdown-item" href="change_password.php">Change Password</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Exit</a>
                         </div>

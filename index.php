@@ -10,7 +10,7 @@
         <?php 
             if(isset($_GET['pesan'])){
                 if($_GET['pesan']=="gagal"){
-                    echo "<script type='text/javascript'>alert('Email dan Password tidak sesuai');</script>";
+                    echo "<script type='text/javascript'>alert('Email and Password is incorrect');</script>";
                 } else if($_GET['pesan']=="error"){
                     echo "<script type='text/javascript'>alert('Access Restricted');</script>";
                 }
@@ -21,7 +21,7 @@
             <div class="row justify-content-around">
                 <div class="col-4 jumbotron">
                     <h3>Login</h3>
-                    <form action="login_cek.php" method="POST" style="padding-top: 2rem;">
+                    <form action="index.php" method="POST" style="padding-top: 2rem;">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" name="email" required>
@@ -31,7 +31,7 @@
                             <input type="password" class="form-control" name="password" required></input>
                         </div>
                         <div class="mb-3" style="padding-top: 3rem;">
-                            <button type="submit" class="form-control btn btn-primary" id="login">Login</button>
+                            <button type="submit" class="form-control btn btn-primary" name="login">Login</button>
                         </div>
                     </form>
                 </div>
@@ -39,7 +39,7 @@
                     <center>
                     <h6 style="padding-bottom: 5rem;">Not a Member?</h6>
                     <h4>Register Now</h4><br>
-                    <button type="submit" class="form-control btn btn-outline-info" id="register" onClick="myFunction()">Register</button>
+                    <button type="submit" class="form-control btn btn-outline-info" name="register" onClick="myFunction()">Register</button>
                     </center>
                 </div>
             </div>
@@ -51,3 +51,35 @@
         </script>
     </body>
 </html>
+<?php
+if(isset($_POST['login'])){
+    session_start();
+    include 'koneksi.php';
+     
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+     
+     
+    $login = mysqli_query($koneksi,"SELECT * FROM user WHERE Email='$email' AND Password='$password'");
+    $cek = mysqli_num_rows($login);
+    
+    if($cek > 0){
+        $data = mysqli_fetch_assoc($login);
+        if($data['Role']=="Admin"){
+            $_SESSION['Email'] = $email;
+            $_SESSION['Password'] = $password;
+            $_SESSION['Role'] = "Admin";
+            header("location:index_admin.php");
+        } else if($data['Role']=="Member"){
+            $_SESSION['Email'] = $email;
+            $_SESSION['Password'] = $password;
+            $_SESSION['Role'] = "Member";
+            header("location:index_member.php"); 
+        } else{
+            header("location:index.php?pesan=gagal");
+        }	
+    } else{
+        header("location:index.php?pesan=gagal");
+    }
+}
+?>
