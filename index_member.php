@@ -11,10 +11,8 @@
             session_start();
 
             if($_SESSION['Role']==""){
-                header("location:index.php?pesan=error");
-            } else if($_SESSION['Role']=="Admin"){
-                header("location:index.php?pesan=error");
-            }       
+                header("location:index.php?message=error");
+            }
         ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">

@@ -8,10 +8,10 @@
     </head>
     <body>
         <?php 
-            if(isset($_GET['pesan'])){
-                if($_GET['pesan']=="gagal"){
-                    echo "<script type='text/javascript'>alert('Email and Password is incorrect');</script>";
-                } else if($_GET['pesan']=="error"){
+            if(isset($_GET['message'])){
+                if($_GET['message']=="fail"){
+                    echo "<script type='text/javascript'>alert('Email or Password is incorrect');</script>";
+                } else if($_GET['message']=="error"){
                     echo "<script type='text/javascript'>alert('Access Restricted');</script>";
                 }
             }
@@ -76,10 +76,10 @@ if(isset($_POST['login'])){
             $_SESSION['Role'] = "Member";
             header("location:index_member.php"); 
         } else{
-            header("location:index.php?pesan=gagal");
+            header("location:index.php?message=fail");
         }	
     } else{
-        header("location:index.php?pesan=gagal");
+        header("location:index.php?message=fail");
     }
 }
 ?>

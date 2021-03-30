@@ -11,9 +11,9 @@
             session_start();
 
             if($_SESSION['Role']==""){
-                header("location:index.php?pesan=error");
+                header("location:index.php?message=error");
             } else if($_SESSION['Role']=="Member"){
-                header("location:index.php?pesan=error");
+                header("location:index.php?message=error");
             } 
         ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,8 +26,6 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="logout.php">Logout</a>
                             <a class="dropdown-item" href="change_password.php">Change Password</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Exit</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -35,7 +33,7 @@
                             Master
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Book</a>
+                            <a class="dropdown-item" href="book.php">Book</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -44,7 +42,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Deposit Payment</a>
-                            <a class="dropdown-item" href="#">Return Book</a>
+                            <a class="dropdown-item" href="return.php">Return Book</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
